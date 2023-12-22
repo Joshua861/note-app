@@ -21,7 +21,7 @@
 	}
 </script>
 
-<div class="prose mx-auto font-mono">
+<div class="prose mx-auto px-3 font-mono">
 	<h1>Create Note</h1>
 
 	<div class="flex gap-5">

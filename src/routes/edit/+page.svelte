@@ -36,7 +36,7 @@
 	}
 </script>
 
-<div class="prose mx-auto font-mono">
+<div class="prose mx-auto px-3 font-mono">
 	{#if mounted}
 		<h1>Edit note</h1>
 

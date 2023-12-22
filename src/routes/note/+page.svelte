@@ -34,7 +34,7 @@
 	});
 </script>
 
-<div class="prose mx-auto">
+<div class="prose mx-auto px-3">
 	{#if mounted}
 		<h1>{note.title}</h1>
 		<span class="font-mono text-neutral-500">

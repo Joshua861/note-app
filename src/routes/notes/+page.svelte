@@ -13,7 +13,7 @@
 	});
 </script>
 
-<div class="prose mx-auto font-mono">
+<div class="prose mx-auto px-3 font-mono">
 	<h1>Notes</h1>
 	{#if noNotes}
 		<h2>No notes... yet</h2>
