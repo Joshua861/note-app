@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { notes } from '$lib/notes.ts';
 	import { goto } from '$app/navigation';
+	import { save } from 'save-file';
 	import Time from 'svelte-time';
 	import SvelteMarkdown from 'svelte-markdown';
 	import { onMount } from 'svelte';
@@ -12,6 +13,15 @@
 	function deleteNote() {
 		notes.update((n) => n.filter((note) => note.id !== id));
 		goto('/notes');
+	}
+
+	async function downloadNote() {
+		await save(
+			`# ${note.title}
+
+${note.content}`,
+			`${note.title.replaceAll(' ', '-').toLowerCase()}.md`
+		);
 	}
 
 	function editNote() {
@@ -40,7 +50,8 @@
 		<span class="font-mono text-neutral-500">
 			<Time timestamp={note.date} /> |
 			<button on:click={deleteNote}>delete</button> |
-			<button on:click={editNote}>edit</button>
+			<button on:click={editNote}>edit</button> |
+			<button on:click={downloadNote}>download</button>
 		</span>
 
 		<SvelteMarkdown source={note.content} />

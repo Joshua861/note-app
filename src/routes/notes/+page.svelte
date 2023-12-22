@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { notes, hasVisited } from '$lib/notes.ts';
 	import Time from 'svelte-time';
-	import { v4 as uuidv4 } from 'uuid';
 	import { onMount } from 'svelte';
 
-	console.log($notes);
 	let noNotes: boolean = false;
 
 	onMount(() => {
@@ -14,7 +12,7 @@
 				...n,
 				{
 					title: 'How to use',
-					id: uuidv4(),
+					id: 'how-to-use',
 					date: Date.now(),
 					content: `
 This notes app supports *markdown*, meaning you can add:

@@ -46,17 +46,17 @@
 				bind:value={title}
 				type="text"
 				placeholder="Title"
-				class="flex-1 border border-black"
+				class="flex-1 border border-neutral-300"
 			/>
 			<button
-				class="hover:bg-300 w-fit w-fit flex-1 border border-black hover:bg-neutral-100"
+				class="hover:bg-300 w-fit w-fit flex-1 border border-neutral-300 hover:bg-neutral-100"
 				on:click={save}>Save note</button
 			>
 		</div>
 		<br />
 		<textarea
 			bind:value={content}
-			class="h-[80svh] w-full border border-black"
+			class="h-[80svh] w-full border border-neutral-300"
 			placeholder="Content"
 		></textarea>
 	{/if}

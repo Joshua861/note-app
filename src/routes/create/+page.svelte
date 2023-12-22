@@ -8,20 +8,21 @@
 
 	function save() {
 		let id = uuidv4();
-		notes.update((n) => [
-			...n,
-			{
+		notes.update((n) => {
+			let newNote = {
 				title: title,
 				id: id,
 				date: Date.now(),
 				content: content
-			}
-		]);
+			};
+
+			return [newNote, ...n];
+		});
 		goto(`/note?id=${id}`);
 	}
 </script>
 
-<div class="prose mx-auto px-3 font-mono">
+<div class="prose mx-auto h-[100vh] border-neutral-300 px-3 font-mono">
 	<h1>Create Note</h1>
 
 	<div class="flex gap-5">
@@ -30,14 +31,17 @@
 			bind:value={title}
 			type="text"
 			placeholder="Title"
-			class="flex-1 border border-black"
+			class="flex-1 border border-neutral-300"
 		/>
 		<button
-			class="hover:bg-300 w-fit w-fit flex-1 border border-black hover:bg-neutral-100"
+			class="hover:bg-300 w-fit w-fit flex-1 border border-neutral-300 hover:bg-neutral-50"
 			on:click={save}>Save note</button
 		>
 	</div>
 	<br />
-	<textarea bind:value={content} class="h-[80svh] w-full border border-black" placeholder="Content"
+	<textarea
+		bind:value={content}
+		class="h-full w-full border border-neutral-300"
+		placeholder="Content"
 	></textarea>
 </div>
