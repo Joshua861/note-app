@@ -1,15 +1,44 @@
 <script lang="ts">
-	import { notes } from '$lib/notes.ts';
+	import { notes, hasVisited } from '$lib/notes.ts';
 	import Time from 'svelte-time';
+	import { v4 as uuidv4 } from 'uuid';
 	import { onMount } from 'svelte';
 
 	console.log($notes);
-	let noNotes: boolean = false,
-		mounted = false;
+	let noNotes: boolean = false;
 
 	onMount(() => {
+		if (!$hasVisited) {
+			hasVisited.set(true);
+			notes.update((n) => [
+				...n,
+				{
+					title: 'How to use',
+					id: uuidv4(),
+					date: Date.now(),
+					content: `
+This notes app supports *markdown*, meaning you can add:
+
+*Italics*, **bold**, \`code\`, [links](https://commonmark.org/help/).
+
+> Blockquotes
+
+- Unordered lists,
+
+1. and ordered lists
+
+---
+
+## Subheadings,
+
+and more.
+
+If you don't know markdown, then you can learn [here](https://commonmark.org/help/), or edit this note to see the markdown.
+`
+				}
+			]);
+		}
 		noNotes = $notes.length === 0;
-		mounted = true;
 	});
 </script>
 
