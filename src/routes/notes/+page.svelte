@@ -34,7 +34,7 @@ and more.
 If you don't know markdown, then you can learn [here](https://commonmark.org/help/), or edit this note to see the markdown.
 
 
-# Storage
+## Storage
 
 All your notes are stored on device, meaning they are not sent anywhere and are not visible for others to see. They also aren't able to be synced between devices.`
 				}
