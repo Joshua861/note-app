@@ -39,7 +39,7 @@
 	$: title, update();
 </script>
 
-<div class="prose mx-auto h-[100vh] border-neutral-300 px-3 font-mono">
+<div class="prose mx-auto h-[100vh] border-neutral-300 px-3">
 	<h1>Create Note</h1>
 
 	<div class="flex gap-5">
@@ -58,7 +58,7 @@
 	<br />
 	<textarea
 		bind:value={content}
-		class="h-full w-full border border-neutral-300"
+		class="h-full w-full border border-neutral-300 font-mono"
 		placeholder="Content"
 	></textarea>
 </div>

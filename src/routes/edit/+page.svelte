@@ -51,7 +51,7 @@
 	}
 </script>
 
-<div class="prose mx-auto px-3 font-mono">
+<div class="prose mx-auto px-3">
 	{#if mounted}
 		<h1>Edit note</h1>
 
@@ -72,7 +72,7 @@
 		<br />
 		<textarea
 			bind:value={content}
-			class="h-[80svh] w-full border border-neutral-300"
+			class="h-[80svh] w-full border border-neutral-300 font-mono"
 			placeholder="Content"
 			on:input={update}
 		></textarea>

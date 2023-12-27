@@ -3,7 +3,8 @@
 	import Time from 'svelte-time';
 	import { onMount } from 'svelte';
 
-	let noNotes: boolean = false;
+	let noNotes: boolean = false,
+		mounted = false;
 
 	function removeEmptyNotes() {
 		notes.update((notes) =>
@@ -12,6 +13,7 @@
 	}
 
 	onMount(() => {
+		mounted = true;
 		removeEmptyNotes();
 		if (!$hasVisited) {
 			hasVisited.set(true);
@@ -51,20 +53,22 @@ All your notes are stored on device, meaning they are not sent anywhere and are 
 	});
 </script>
 
-<div class="prose mx-auto px-3 font-mono">
+<div class="prose mx-auto px-3">
 	<h1>Notes</h1>
-	{#if noNotes}
-		<h2>No notes... yet</h2>
-		<a href="/create">Create one</a>
+	{#if mounted}
+		{#if noNotes}
+			<h2>No notes... yet</h2>
+			<a href="/create">Create one</a>
+		{/if}
+		<ul class="list-none font-mono">
+			{#each $notes as note}
+				<li>
+					<a href="/note?id={note.id}">{note.title}</a>
+					<br />
+					<Time timestamp={note.time} class="text-neutral-500" />
+					<br /><br />
+				</li>
+			{/each}
+		</ul>
 	{/if}
-	<ul class="list-none">
-		{#each $notes as note}
-			<li>
-				<a href="/note?id={note.id}">{note.title}</a>
-				<br />
-				<Time timestamp={note.time} class="text-neutral-500" />
-				<br /><br />
-			</li>
-		{/each}
-	</ul>
 </div>
