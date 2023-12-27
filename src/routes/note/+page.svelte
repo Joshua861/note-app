@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 
 	let id, note;
+	let title = 'Note';
 	let mounted = false;
 
 	function deleteNote() {
@@ -41,8 +42,13 @@ ${note.content}`,
 		}
 
 		mounted = true;
+		title = note.title;
 	});
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
 
 <div class="prose mx-auto px-3">
 	{#if mounted}

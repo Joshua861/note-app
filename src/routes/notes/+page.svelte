@@ -23,8 +23,7 @@
 					title: 'How to use',
 					id: 'how-to-use',
 					date: Date.now(),
-					content: `
-This notes app supports *markdown*, meaning you can add:
+					content: `This notes app supports *markdown*, meaning you can add:
 
 *Italics*, **bold**, \`code\`, [links](https://commonmark.org/help/).
 
@@ -52,6 +51,10 @@ All your notes are stored on device, meaning they are not sent anywhere and are 
 		noNotes = $notes.length === 0;
 	});
 </script>
+
+<svelte:head>
+	<title>Notes</title>
+</svelte:head>
 
 <div class="prose mx-auto px-3">
 	<h1>Notes</h1>

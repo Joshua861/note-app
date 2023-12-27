@@ -51,6 +51,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Editing: {title}</title>
+</svelte:head>
+
 <div class="prose mx-auto px-3">
 	{#if mounted}
 		<h1>Edit note</h1>

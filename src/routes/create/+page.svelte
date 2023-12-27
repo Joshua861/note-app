@@ -39,6 +39,10 @@
 	$: title, update();
 </script>
 
+<svelte:head>
+	<title>Create Note</title>
+</svelte:head>
+
 <div class="prose mx-auto h-[100vh] border-neutral-300 px-3">
 	<h1>Create Note</h1>
 
@@ -58,7 +62,7 @@
 	<br />
 	<textarea
 		bind:value={content}
-		class="h-full w-full border border-neutral-300 font-mono"
+		class="h-full w-full border border-neutral-300"
 		placeholder="Content"
 	></textarea>
 </div>
