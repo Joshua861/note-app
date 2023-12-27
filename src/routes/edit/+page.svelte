@@ -23,7 +23,8 @@
 		mounted = true;
 	});
 
-	function save() {
+	function update() {
+		console.log('saving...');
 		let updatedNote = {
 			title: title,
 			id: id,
@@ -31,7 +32,21 @@
 			content: content
 		};
 
-		notes.update((n) => n.map((note) => (note.id === id ? updatedNote : note)));
+		deleteNote(id);
+		createNote(updatedNote);
+	}
+
+	function createNote(note) {
+		notes.update((n) => {
+			return [note, ...n];
+		});
+	}
+
+	function deleteNote(id) {
+		notes.update((notes) => notes.filter((note) => note.id !== id));
+	}
+
+	function save() {
 		goto(`/note?id=${id}`);
 	}
 </script>
@@ -47,6 +62,7 @@
 				type="text"
 				placeholder="Title"
 				class="flex-1 border border-neutral-300"
+				on:input={update}
 			/>
 			<button
 				class="hover:bg-300 w-fit w-fit flex-1 border border-neutral-300 hover:bg-neutral-100"
@@ -58,6 +74,7 @@
 			bind:value={content}
 			class="h-[80svh] w-full border border-neutral-300"
 			placeholder="Content"
+			on:input={update}
 		></textarea>
 	{/if}
 </div>

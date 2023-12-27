@@ -5,7 +5,12 @@
 
 	let noNotes: boolean = false;
 
+	function removeEmptyNotes() {
+		notes.update((notes) => notes.filter((note) => note.title !== '' && note.content !== ''));
+	}
+
 	onMount(() => {
+		removeEmptyNotes();
 		if (!$hasVisited) {
 			hasVisited.set(true);
 			notes.update((n) => [

@@ -3,23 +3,40 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import { goto } from '$app/navigation';
 
-	let title: string;
-	let content: string;
+	let title: string = '';
+	let content: string = '';
+	let id = uuidv4();
+
+	function update() {
+		console.log('saving...');
+		let updatedNote = {
+			title: title,
+			id: id,
+			date: Date.now(),
+			content: content
+		};
+
+		deleteNote(id);
+		createNote(updatedNote);
+	}
+
+	function createNote(note) {
+		notes.update((n) => {
+			return [note, ...n];
+		});
+	}
+
+	function deleteNote(id) {
+		notes.update((notes) => notes.filter((note) => note.id !== id));
+	}
 
 	function save() {
-		let id = uuidv4();
-		notes.update((n) => {
-			let newNote = {
-				title: title,
-				id: id,
-				date: Date.now(),
-				content: content
-			};
-
-			return [newNote, ...n];
-		});
 		goto(`/note?id=${id}`);
 	}
+
+	$: content, update();
+
+	$: title, update();
 </script>
 
 <div class="prose mx-auto h-[100vh] border-neutral-300 px-3 font-mono">
@@ -35,7 +52,7 @@
 		/>
 		<button
 			class="hover:bg-300 w-fit w-fit flex-1 border border-neutral-300 hover:bg-neutral-50"
-			on:click={save}>Save note</button
+			on:click={save}>Done</button
 		>
 	</div>
 	<br />
