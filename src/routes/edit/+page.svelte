@@ -66,7 +66,7 @@
 			/>
 			<button
 				class="hover:bg-300 w-fit w-fit flex-1 border border-neutral-300 hover:bg-neutral-100"
-				on:click={save}>Save note</button
+				on:click={save}>Done</button
 			>
 		</div>
 		<br />

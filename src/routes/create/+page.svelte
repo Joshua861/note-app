@@ -8,9 +8,9 @@
 	let id = uuidv4();
 
 	function update() {
-		console.log('saving...');
+		let savedTitle = title !== '' ? title : 'No title';
 		let updatedNote = {
-			title: title,
+			title: savedTitle,
 			id: id,
 			date: Date.now(),
 			content: content

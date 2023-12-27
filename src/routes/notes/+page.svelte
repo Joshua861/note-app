@@ -6,7 +6,9 @@
 	let noNotes: boolean = false;
 
 	function removeEmptyNotes() {
-		notes.update((notes) => notes.filter((note) => note.title !== '' && note.content !== ''));
+		notes.update((notes) =>
+			notes.filter((note) => note.title !== 'No title' || note.content !== '')
+		);
 	}
 
 	onMount(() => {
@@ -41,7 +43,7 @@ If you don't know markdown, then you can learn [here](https://commonmark.org/hel
 
 ## Storage
 
-All your notes are stored on device, meaning they are not sent anywhere and are not visible for others to see. They also aren't able to be synced between devices.`
+All your notes are stored on device, meaning they are not sent anywhere and are not visible for others to see. They also aren't able to be synced between devices. They auto save, so, if when writing a note, you close the tab, your writing up to that point will have been saved.`
 				}
 			]);
 		}
